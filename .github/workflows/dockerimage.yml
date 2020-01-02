@@ -11,7 +11,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - name: Docker Build
-      run: docker build . --file Dockerfile --tag sqeezy/emoos.solutions:$(date +%s) --tag sqeezy/emoos.solutions:latest
+      run: docker build . --file Dockerfile -t sqeezy/emoos.solutions:$(date +%s) -t sqeezy/emoos.solutions:latest
 
     - name: Docker Publish
       uses: manusa/actions-publish-docker@v1.0.1
@@ -19,7 +19,7 @@ jobs:
         # Name of the Docker image
         name: sqeezy/emoos.solutions
         # Tag for the Docker image
-        tag: $(date +%s)
+        tag: latest
         # Script body to compute tag name for the Docker image, has context as the main function argument
         # Username for Docker registry
         username: ${{ secrets.DOCKER_USERNAME }}
