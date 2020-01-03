@@ -3,6 +3,7 @@ EXPOSE 80
 EXPOSE 443
 WORKDIR /app
 COPY . ./
+RUN dotnet restore
 RUN dotnet publish -c Release -o output
 
 # Runtime image
