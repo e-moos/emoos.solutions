@@ -4,11 +4,12 @@
     <TargetFramework>netcoreapp3.0</TargetFramework>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="BookService.fs" />
+    <Compile Include="PictureService.fs" />
     <Compile Include="HostModel.fs" />
     <Compile Include="Startup.fs" />
   </ItemGroup>
   <ItemGroup>
+    <PackageReference Include="SixLabors.ImageSharp" Version="1.0.0-beta0007" />
     <ProjectReference Include="..\EMoos.Client\EMoos.Client.fsproj" />
     <PackageReference Include="Bolero.Server" Version="0.10.1-preview9" />
     <PackageReference Include="Bolero.HotReload.Server" Version="0.10.4-preview9" />
