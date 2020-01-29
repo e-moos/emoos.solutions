@@ -14,7 +14,7 @@ jobs:
       run: docker build . --file Dockerfile -t sqeezy/emoos.solutions:$(date +%s) -t sqeezy/emoos.solutions:latest
 
     - name: Docker Publish
-      uses: manusa/actions-publish-docker@v1.0.1
+      uses: manusa/actions-publish-docker@master
       with:
         # Name of the Docker image
         name: sqeezy/emoos.solutions
