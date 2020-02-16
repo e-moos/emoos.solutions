@@ -1,17 +1,14 @@
 namespace EMoos.Server
 
-open Bolero
-open Bolero.Remoting.Server
-open Bolero.Templating.Server
-open EMoos
 open Microsoft.AspNetCore
 open Microsoft.AspNetCore.Authentication.Cookies
 open Microsoft.AspNetCore.Builder
 open Microsoft.AspNetCore.Hosting
-open Microsoft.AspNetCore.StaticFiles
 open Microsoft.Extensions.DependencyInjection
-open Microsoft.Extensions.FileProviders
-open System.IO
+open Bolero
+open Bolero.Remoting.Server
+open EMoos
+open Bolero.Templating.Server
 
 type Startup() =
 
@@ -33,18 +30,10 @@ type Startup() =
 
     // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
     member this.Configure(app: IApplicationBuilder, env: IWebHostEnvironment) =
-        let provider = FileExtensionContentTypeProvider()
-        provider.Mappings.[".fsx"] <- "text/x-fsharp"
         app
             .UseAuthentication()
             .UseRemoting()
-            .UseStaticFiles(
-            StaticFileOptions(
-                FileProvider = new PhysicalFileProvider(
-                    Path.Combine(
-                        Path.GetDirectoryName(Directory.GetCurrentDirectory()),
-                        "EMoos.Client", "wwwroot")),
-                ContentTypeProvider = provider))
+            .UseStaticFiles()
             .UseRouting()
             .UseClientSideBlazorFiles<Client.Main.MyApp>()
             .UseEndpoints(fun endpoints ->
