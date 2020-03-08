@@ -60,12 +60,13 @@ internal class Program
                                                     }
                                       });
 
-        var hostNameBinding = new CustomHostnameBinding("dev.emoos.solutions", new CustomHostnameBindingArgs
-                                                                               {
-                                                                                   AppServiceName = appService.Name,
-                                                                                   Hostname = "dev.emoos.solutions",
-                                                                                   ResourceGroupName = resourceGroupName
-                                                                               });
+        var hostNameBinding = new CustomHostnameBinding("dev.emoos.solutions",
+                                                        new CustomHostnameBindingArgs
+                                                        {
+                                                            AppServiceName = appService.Name,
+                                                            Hostname = "dev.emoos.solutions",
+                                                            ResourceGroupName = resourceGroupName
+                                                        });
 
         return new Dictionary<string, object?> {{"default route", appService.DefaultSiteHostname}, {"domain binding", hostNameBinding.Hostname}};
     }
