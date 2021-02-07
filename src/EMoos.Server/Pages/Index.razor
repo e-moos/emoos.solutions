@@ -1,7 +1,21 @@
 @page "/"
+@using System.Reflection
+@using System.Runtime.InteropServices
+@using System.Runtime.Versioning
 
 <h1>Hello, world!</h1>
 
 Welcome to your new app.
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+<SurveyPrompt Title="How is Blazor working for you?"/>
+
+<div>build from commit @ThisAssembly.AssemblyInformationalVersion. Running on @Os with @AspNetVersion</div>
+
+@code
+{
+
+    private readonly string Os = RuntimeInformation.OSDescription;
+    private readonly string AspNetVersion = Assembly.GetEntryAssembly()
+                                           ?.GetCustomAttribute<TargetFrameworkAttribute>()
+                                           ?.FrameworkName;
+}
