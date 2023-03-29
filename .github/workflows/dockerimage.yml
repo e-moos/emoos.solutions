@@ -17,7 +17,7 @@ jobs:
       run: docker build . --file Dockerfile -t sqeezy/emoos.solutions:${{ github.sha }} -t sqeezy/emoos.solutions:latest
 
     - name: Docker Publish
-      uses: elgohr/Publish-Docker-Github-Action@master
+      uses: elgohr/Publish-Docker-Github-Action@v5
       with:
         # Name of the Docker image
         name: sqeezy/emoos.solutions
